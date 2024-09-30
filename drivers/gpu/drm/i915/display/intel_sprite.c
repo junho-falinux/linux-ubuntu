@@ -378,7 +378,8 @@ static void vlv_sprite_update_gamma(const struct intel_plane_state *plane_state)
 }
 
 static void
-vlv_sprite_update_noarm(struct intel_plane *plane,
+vlv_sprite_update_noarm(struct intel_dsb *dsb,
+			struct intel_plane *plane,
 			const struct intel_crtc_state *crtc_state,
 			const struct intel_plane_state *plane_state)
 {
@@ -399,7 +400,8 @@ vlv_sprite_update_noarm(struct intel_plane *plane,
 }
 
 static void
-vlv_sprite_update_arm(struct intel_plane *plane,
+vlv_sprite_update_arm(struct intel_dsb *dsb,
+		      struct intel_plane *plane,
 		      const struct intel_crtc_state *crtc_state,
 		      const struct intel_plane_state *plane_state)
 {
@@ -448,7 +450,8 @@ vlv_sprite_update_arm(struct intel_plane *plane,
 }
 
 static void
-vlv_sprite_disable_arm(struct intel_plane *plane,
+vlv_sprite_disable_arm(struct intel_dsb *dsb,
+		       struct intel_plane *plane,
 		       const struct intel_crtc_state *crtc_state)
 {
 	struct drm_i915_private *dev_priv = to_i915(plane->base.dev);
@@ -793,7 +796,8 @@ static void ivb_sprite_update_gamma(const struct intel_plane_state *plane_state)
 }
 
 static void
-ivb_sprite_update_noarm(struct intel_plane *plane,
+ivb_sprite_update_noarm(struct intel_dsb *dsb,
+			struct intel_plane *plane,
 			const struct intel_crtc_state *crtc_state,
 			const struct intel_plane_state *plane_state)
 {
@@ -823,7 +827,8 @@ ivb_sprite_update_noarm(struct intel_plane *plane,
 }
 
 static void
-ivb_sprite_update_arm(struct intel_plane *plane,
+ivb_sprite_update_arm(struct intel_dsb *dsb,
+		      struct intel_plane *plane,
 		      const struct intel_crtc_state *crtc_state,
 		      const struct intel_plane_state *plane_state)
 {
@@ -870,7 +875,8 @@ ivb_sprite_update_arm(struct intel_plane *plane,
 }
 
 static void
-ivb_sprite_disable_arm(struct intel_plane *plane,
+ivb_sprite_disable_arm(struct intel_dsb *dsb,
+		       struct intel_plane *plane,
 		       const struct intel_crtc_state *crtc_state)
 {
 	struct drm_i915_private *dev_priv = to_i915(plane->base.dev);
@@ -1127,7 +1133,8 @@ static void ilk_sprite_update_gamma(const struct intel_plane_state *plane_state)
 }
 
 static void
-g4x_sprite_update_noarm(struct intel_plane *plane,
+g4x_sprite_update_noarm(struct intel_dsb *dsb,
+			struct intel_plane *plane,
 			const struct intel_crtc_state *crtc_state,
 			const struct intel_plane_state *plane_state)
 {
@@ -1156,7 +1163,8 @@ g4x_sprite_update_noarm(struct intel_plane *plane,
 }
 
 static void
-g4x_sprite_update_arm(struct intel_plane *plane,
+g4x_sprite_update_arm(struct intel_dsb *dsb,
+		      struct intel_plane *plane,
 		      const struct intel_crtc_state *crtc_state,
 		      const struct intel_plane_state *plane_state)
 {
@@ -1199,7 +1207,8 @@ g4x_sprite_update_arm(struct intel_plane *plane,
 }
 
 static void
-g4x_sprite_disable_arm(struct intel_plane *plane,
+g4x_sprite_disable_arm(struct intel_dsb *dsb,
+		       struct intel_plane *plane,
 		       const struct intel_crtc_state *crtc_state)
 {
 	struct drm_i915_private *dev_priv = to_i915(plane->base.dev);
