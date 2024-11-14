@@ -140,6 +140,8 @@ struct bnxt_re_pacing {
 
 #define BNXT_RE_GRC_FIFO_REG_BASE 0x2000
 
+#define BNXT_RE_MIN_MSIX		2
+
 #define MAX_CQ_HASH_BITS		(16)
 struct bnxt_re_dev {
 	struct ib_device		ibdev;
