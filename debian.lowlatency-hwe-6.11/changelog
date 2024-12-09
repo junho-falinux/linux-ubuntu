@@ -6,7 +6,7 @@ linux-lowlatency-hwe-6.11 (6.11.0-1006.6~24.04.1) noble; urgency=medium
 
   * Packaging starts on top of oracular:linux-lowlatency (=6.11.0-1006.6)
 
- -- Stefan Bader <stefan.bader@canonical.com>  Thu, 05 Dec 2024 16:55:20 +0100
+ -- Stefan Bader <stefan.bader@canonical.com>  Mon, 09 Dec 2024 16:05:15 +0100
 
 linux-lowlatency (6.11.0-1006.6) oracular; urgency=medium
 
