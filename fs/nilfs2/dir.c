@@ -434,7 +434,7 @@ int nilfs_inode_by_name(struct inode *dir, const struct qstr *qstr, ino_t *ino)
 	return 0;
 }
 
-void nilfs_set_link(struct inode *dir, struct nilfs_dir_entry *de,
+int nilfs_set_link(struct inode *dir, struct nilfs_dir_entry *de,
 		    struct folio *folio, struct inode *inode)
 {
 	size_t from = offset_in_folio(folio, de);
@@ -444,11 +444,15 @@ void nilfs_set_link(struct inode *dir, struct nilfs_dir_entry *de,
 
 	folio_lock(folio);
 	err = nilfs_prepare_chunk(folio, from, to);
-	BUG_ON(err);
+	if (unlikely(err)) {
+		folio_unlock(folio);
+		return err;
+	}
 	de->inode = cpu_to_le64(inode->i_ino);
 	nilfs_set_de_type(de, inode);
 	nilfs_commit_chunk(folio, mapping, from, to);
 	inode_set_mtime_to_ts(dir, inode_set_ctime_current(dir));
+	return 0;
 }
 
 /*
@@ -577,7 +581,10 @@ int nilfs_delete_entry(struct nilfs_dir_entry *dir, struct folio *folio)
 		from = (char *)pde - kaddr;
 	folio_lock(folio);
 	err = nilfs_prepare_chunk(folio, from, to);
-	BUG_ON(err);
+	if (unlikely(err)) {
+		folio_unlock(folio);
+		goto out;
+	}
 	if (pde)
 		pde->rec_len = nilfs_rec_len_to_disk(to - from);
 	dir->inode = 0;
