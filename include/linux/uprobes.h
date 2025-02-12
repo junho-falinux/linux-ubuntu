@@ -33,6 +33,8 @@ enum uprobe_filter_ctx {
 	UPROBE_FILTER_MMAP,
 };
 
+#define UPROBE_NO_TRAMPOLINE_VADDR	(~0UL)
+
 struct uprobe_consumer {
 	int (*handler)(struct uprobe_consumer *self, struct pt_regs *regs);
 	int (*ret_handler)(struct uprobe_consumer *self,
