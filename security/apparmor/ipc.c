@@ -158,9 +158,16 @@ int aa_profile_mqueue_perm(struct aa_profile *profile, const struct path *path,
 	name = dentry_path_raw(path->dentry, buffer, aa_g_path_max);
 	if (IS_ERR(name))
 		return PTR_ERR(name);
+
 	if (path->mnt != current->nsproxy->ipc_ns->mq_mnt) {
-		/* TODO: disconnected path detection */
-		pr_warn("apparmor mqueue disconnected TODO\n");
+		/* check if enforced by userspace? */
+		if (aa_disconnect(path, buffer, &name, profile->path_flags,
+				  PATH_CONNECT_PATH | PATH_CONNECT_IPC_PATH,
+				  profile->disconnected_ipc)) {
+			ad->info = "Failed name lookup - disconnected IPC path";
+			return aa_check_perms(profile, &perms, request,
+					      ad, audit_mqueue_cb);
+		}
 	}
 
 	ad->name = name;

@@ -2582,7 +2582,8 @@ static struct aa_sfs_entry aa_sfs_entry_domain[] = {
 	AA_SFS_FILE_BOOLEAN("computed_longest_left",	1),
 	AA_SFS_DIR("attach_conditions",		aa_sfs_entry_attach),
 	AA_SFS_FILE_BOOLEAN("interruptible",		1),
-	AA_SFS_FILE_BOOLEAN("disconnected.path",            1),
+	AA_SFS_FILE_BOOLEAN("disconnected.path",	1),
+	AA_SFS_FILE_BOOLEAN("disconnected.ipc",		1),
 	AA_SFS_FILE_BOOLEAN("kill.signal",		1),
 	AA_SFS_FILE_STRING("version", "1.2"),
 	{ }
