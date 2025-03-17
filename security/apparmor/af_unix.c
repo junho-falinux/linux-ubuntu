@@ -196,7 +196,7 @@ static int profile_create_perm(struct aa_profile *profile, int family,
 	AA_BUG(!profile);
 	AA_BUG(profile_unconfined(profile));
 
-	state = RULE_MEDIATES_NET(rules);
+	state = RULE_MEDIATES_UNIX(rules);
 	if (state) {
 		state = aa_match_to_prot(rules->policy, state, AA_MAY_CREATE,
 					 PF_UNIX, type, protocol, NULL,
@@ -223,7 +223,7 @@ static int profile_sk_perm(struct aa_profile *profile,
 	AA_BUG(is_unix_fs(sk));
 	AA_BUG(profile_unconfined(profile));
 
-	state = RULE_MEDIATES_NET(rules);
+	state = RULE_MEDIATES_UNIX(rules);
 	if (state) {
 		state = match_to_sk(rules->policy, state, request, unix_sk(sk),
 				    &p, &ad->info);
@@ -247,7 +247,7 @@ static int profile_bind_perm(struct aa_profile *profile, struct sock *sk,
 	AA_BUG(!ad);
 	AA_BUG(profile_unconfined(profile));
 
-	state = RULE_MEDIATES_NET(rules);
+	state = RULE_MEDIATES_UNIX(rules);
 	if (state) {
 		/* bind for abstract socket */
 		state = match_to_local(rules->policy, state, AA_MAY_BIND,
@@ -276,7 +276,7 @@ static int profile_listen_perm(struct aa_profile *profile, struct sock *sk,
 	AA_BUG(!ad);
 	AA_BUG(profile_unconfined(profile));
 
-	state = RULE_MEDIATES_NET(rules);
+	state = RULE_MEDIATES_UNIX(rules);
 	if (state) {
 		__be16 b = cpu_to_be16(backlog);
 
@@ -309,7 +309,7 @@ static int profile_accept_perm(struct aa_profile *profile,
 	AA_BUG(!ad);
 	AA_BUG(profile_unconfined(profile));
 
-	state = RULE_MEDIATES_NET(rules);
+	state = RULE_MEDIATES_UNIX(rules);
 	if (state) {
 		state = match_to_sk(rules->policy, state, AA_MAY_ACCEPT,
 				    unix_sk(sk), &p, &ad->info);
@@ -335,7 +335,7 @@ static int profile_opt_perm(struct aa_profile *profile, u32 request,
 	AA_BUG(!ad);
 	AA_BUG(profile_unconfined(profile));
 
-	state = RULE_MEDIATES_NET(rules);
+	state = RULE_MEDIATES_UNIX(rules);
 	if (state) {
 		__be16 b = cpu_to_be16(optname);
 
@@ -371,7 +371,7 @@ static int profile_peer_perm(struct aa_profile *profile, u32 request,
 	AA_BUG(!ad);
 	AA_BUG(is_unix_fs(peer_sk)); /* currently always calls unix_fs_perm */
 
-	state = RULE_MEDIATES_NET(rules);
+	state = RULE_MEDIATES_UNIX(rules);
 	if (state) {
 		struct aa_sk_ctx *peer_ctx = aa_sock(peer_sk);
 		struct aa_profile *peerp;

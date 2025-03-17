@@ -338,7 +338,23 @@ static inline aa_state_t RULE_MEDIATES_NET(struct aa_ruleset *rules)
 	/* fallback and check v7/8 if v9 is NOT mediated */
 	if (!state)
 		state = RULE_MEDIATES(rules, AA_CLASS_NET);
+	return state;
+}
 
+static inline aa_state_t RULE_MEDIATES_UNIX(struct aa_ruleset *rules)
+{
+	/* can not use RULE_MEDIATE_v9AF here, because AF match fail
+	 * can not be distiguished from class match fail, and we only
+	 * fallback to checking older class on class match failure
+	 */
+	aa_state_t state = RULE_MEDIATES(rules, AA_CLASS_NETV9);
+
+	/* fallback and check v7/8 if v9 is NOT mediated */
+	if (!state) {
+		state = RULE_MEDIATES(rules, AA_CLASS_NET);
+		if (!state)
+			state = RULE_MEDIATES(rules, AA_CLASS_NET_COMPAT);
+	}
 	return state;
 }
 
