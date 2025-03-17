@@ -1407,13 +1407,21 @@ static int apparmor_socket_create(int family, int type, int protocol, int kern)
 
 	label = begin_current_label_crit_section();
 	if (!unconfined(label)) {
-		if (family == PF_UNIX)
+		switch (family) {
+		case PF_UNIX:
 			error = aa_unix_create_perm(label, family, type,
 						    protocol);
-		else
+			break;
+		case PF_INET:
+		case PF_INET6:
+			error = aa_inet_create_perm(label, family, type,
+						    protocol);
+			break;
+		default:
 			error = aa_af_perm(current_cred(), label, OP_CREATE,
 					   AA_MAY_CREATE, family, type,
 					   protocol);
+		}
 	}
 	end_current_label_crit_section(label);
 
