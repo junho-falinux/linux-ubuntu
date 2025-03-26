@@ -393,6 +393,8 @@ static int exfat_get_block(struct inode *inode, sector_t iblock,
 
 			folio_zero_segment(bh_result->b_folio, off + size,
 					off + sb->s_blocksize);
+
+			err = 0;
 		} else {
 			/*
 			 * The range has not been written, clear the mapped flag
