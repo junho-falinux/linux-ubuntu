@@ -1115,6 +1115,7 @@ static int aggr_parse(struct gpio_aggregator *aggr)
 
 	if (!n) {
 		pr_err("No GPIOs specified\n");
+		error = -EINVAL;
 		goto err;
 	}
 
