@@ -11529,6 +11529,7 @@ CONFIG_ROCKCHIP_DW_HDMI                         policy<{'arm64': 'y', 'armhf': '
 CONFIG_ROCKCHIP_DW_HDMI_QP                      policy<{'arm64': 'y', 'armhf': 'y'}>
 CONFIG_ROCKCHIP_DW_MIPI_DSI                     policy<{'arm64': 'y', 'armhf': 'y'}>
 CONFIG_ROCKCHIP_DW_MIPI_DSI2                    policy<{'arm64': 'y', 'armhf': 'y'}>
+CONFIG_ROCKCHIP_ERRATUM_3568002                 policy<{'arm64': 'y'}>
 CONFIG_ROCKCHIP_ERRATUM_3588001                 policy<{'arm64': 'y'}>
 CONFIG_ROCKCHIP_GRF                             policy<{'arm64': 'y', 'armhf': 'y'}>
 CONFIG_ROCKCHIP_INNO_HDMI                       policy<{'arm64': 'y', 'armhf': 'y'}>
