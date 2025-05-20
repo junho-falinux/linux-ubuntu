@@ -517,7 +517,7 @@ static int nvme_uring_cmd_io(struct nvme_ctrl *ctrl, struct nvme_ns *ns,
 	if (d.addr && d.data_len) {
 		ret = nvme_map_user_request(req, d.addr,
 			d.data_len, nvme_to_user_ptr(d.metadata),
-			d.metadata_len, ioucmd, vec);
+			d.metadata_len, ioucmd, vec ? NVME_IOCTL_VEC : 0);
 		if (ret)
 			return ret;
 	}
