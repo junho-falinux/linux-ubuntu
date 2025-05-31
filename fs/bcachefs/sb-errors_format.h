@@ -230,6 +230,7 @@ enum bch_fsck_flags {
 	x(inode_dir_multiple_links,				206,	FSCK_AUTOFIX)	\
 	x(inode_dir_missing_backpointer,			284,	FSCK_AUTOFIX)	\
 	x(inode_dir_unlinked_but_not_empty,			286,	FSCK_AUTOFIX)	\
+	x(inode_dir_has_nonzero_i_size,				319,	FSCK_AUTOFIX)	\
 	x(inode_multiple_links_but_nlink_0,			207,	FSCK_AUTOFIX)	\
 	x(inode_wrong_backpointer,				208,	FSCK_AUTOFIX)	\
 	x(inode_wrong_nlink,					209,	FSCK_AUTOFIX)	\
@@ -314,7 +315,7 @@ enum bch_fsck_flags {
 	x(compression_opt_not_marked_in_sb,			295,	FSCK_AUTOFIX)	\
 	x(compression_type_not_marked_in_sb,			296,	FSCK_AUTOFIX)	\
 	x(directory_size_mismatch,				303,	FSCK_AUTOFIX)	\
-	x(MAX,							304,	0)
+	x(MAX,							320,	0)
 
 enum bch_sb_error_id {
 #define x(t, n, ...) BCH_FSCK_ERR_##t = n,
