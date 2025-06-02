@@ -199,6 +199,8 @@
 	x(EINVAL,			remove_would_lose_data)			\
 	x(EINVAL,			no_resize_with_buckets_nouse)		\
 	x(EINVAL,			inode_unpack_error)			\
+	x(EINVAL,			inode_not_unlinked)			\
+	x(EINVAL,			inode_has_child_snapshot)		\
 	x(EINVAL,			varint_decode_error)			\
 	x(EROFS,			erofs_trans_commit)			\
 	x(EROFS,			erofs_no_writes)			\
