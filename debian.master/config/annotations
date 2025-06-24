@@ -8350,6 +8350,7 @@ CONFIG_MITIGATION_CALL_DEPTH_TRACKING           policy<{'amd64': 'y'}>
 CONFIG_MITIGATION_GDS                           policy<{'amd64': 'n'}>
 CONFIG_MITIGATION_IBPB_ENTRY                    policy<{'amd64': 'y'}>
 CONFIG_MITIGATION_IBRS_ENTRY                    policy<{'amd64': 'y'}>
+CONFIG_MITIGATION_ITS                           policy<{'amd64': 'y'}>
 CONFIG_MITIGATION_L1TF                          policy<{'amd64': 'y'}>
 CONFIG_MITIGATION_MDS                           policy<{'amd64': 'y'}>
 CONFIG_MITIGATION_MMIO_STALE_DATA               policy<{'amd64': 'y'}>
